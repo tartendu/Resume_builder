@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Builder Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-file-alt"></i>
+                <h1>AI Resume Builder Pro</h1>
+            </div>
+            <div class="theme-switcher">
+                <button id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="form-container">
+                <div class="progress-bar">
+                    <div class="progress-step active" data-step="personal">
+                        <i class="fas fa-user"></i>
+                        <span>Personal</span>
+                    </div>
+                    <div class="progress-step" data-step="education">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Education</span>
+                    </div>
+                    <div class="progress-step" data-step="experience">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Experience</span>
+                    </div>
+                    <div class="progress-step" data-step="skills">
+                        <i class="fas fa-star"></i>
+                        <span>Skills</span>
+                    </div>
+                </div>
+
+                <form id="resumeForm" class="resume-form">
+                    <!-- Personal Information Section -->
+                    <section class="form-section active" id="personalSection">
+                        <h2><i class="fas fa-user"></i> Personal Information</h2>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="jobTitle">Job Title</label>
+                                <input type="text" id="jobTitle" name="jobTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="summary">Professional Summary</label>
+                                <textarea id="summary" name="summary" rows="4"></textarea>
+                                <button type="button" class="ai-suggest" onclick="suggestSummary()">
+                                    <i class="fas fa-magic"></i> AI Suggest
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Education Section -->
+                    <section class="form-section" id="educationSection">
+                        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                        <div id="educationList">
+                            <!-- Education entries will be added here -->
+                        </div>
+                        <button type="button" class="add-button" onclick="addEducation()">
+                            <i class="fas fa-plus"></i> Add Education
+                        </button>
+                    </section>
+
+                    <!-- Experience Section -->
+                    <section class="form-section" id="experienceSection">
+                        <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+                        <div id="experienceList">
+                            <!-- Experience entries will be added here -->
+                        </div>
+                        <button type="button" class="add-button" onclick="addExperience()">
+                            <i class="fas fa-plus"></i> Add Experience
+                        </button>
+                    </section>
+
+                    <!-- Skills Section -->
+                    <section class="form-section" id="skillsSection">
+                        <h2><i class="fas fa-star"></i> Skills</h2>
+                        <div id="skillsList" class="skills-grid">
+                            <!-- Skills will be added here -->
+                        </div>
+                        <button type="button" class="add-button" onclick="addSkill()">
+                            <i class="fas fa-plus"></i> Add Skill
+                        </button>
+                    </section>
+
+                    <div class="form-navigation">
+                        <button type="button" class="nav-button" id="prevButton" onclick="prevSection()">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button type="button" class="nav-button" id="nextButton" onclick="nextSection()">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="preview-container">
+                <div class="preview-header">
+                    <h2>Live Preview</h2>
+                    <div class="preview-actions">
+                        <button onclick="changeTemplate('modern')" class="template-button">
+                            <i class="fas fa-paint-brush"></i> Modern
+                        </button>
+                        <button onclick="changeTemplate('classic')" class="template-button">
+                            <i class="fas fa-file-alt"></i> Classic
+                        </button>
+                        <button onclick="downloadResume()" class="download-button">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+                <div id="resumePreview" class="resume-preview">
+                    <!-- Resume preview will be rendered here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
